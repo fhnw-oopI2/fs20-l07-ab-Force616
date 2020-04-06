@@ -24,6 +24,7 @@ public class ApplicationUI extends VBox{
 		inputText = new Label(slidernum.toString());
 		inputText.setAlignment(Pos.BASELINE_CENTER);
 		
+		slidernum.set(5.0);
 		slider = new Slider(1, 10, slidernum.get());
 		slider.setShowTickMarks(true);
 		slider.setShowTickLabels(true);
@@ -33,8 +34,8 @@ public class ApplicationUI extends VBox{
 	
 	private void layoutControls() {
 		VBox rootPane = new VBox();
-		slidernum.set(5.0);
-		slidernum.addListener(slidernum -> inputText.textProperty().setValue(slider.valueProperty().toString()));
+
+		slider.valueProperty().addListener(slidernum -> inputText.textProperty().setValue(slider.valueProperty().toString()));
 		
 		rootPane.setPadding(new Insets(10, 10, 10, 10));
 		rootPane.getChildren().addAll(inputText, slider);
